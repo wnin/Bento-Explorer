@@ -1,0 +1,125 @@
+<style>
+	/* HTML Elements - Least Specificity */
+	header {
+		background-color: #dedede;
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dedede), to(#00487f));
+		background-image: -webkit-linear-gradient(top, #dedede, #ffffff); 
+		background-image: -moz-linear-gradient(top, #dedede, #ffffff);
+		background-image: -ms-linear-gradient(top, #dedede, #ffffff);
+		background-image: -o-linear-gradient(top, #dedede, #ffffff);
+		filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#dedede', endColorstr='#ffffff');
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#dedede', endColorstr='#ffffff')";
+	}
+
+	/* Classes - middle of specificity */
+	.explorer.default {
+		background: #fff;
+	}
+
+	.explorer.default .main-menu {
+		background-color: #0072cf;
+        background-image: url(http://bento.cdn.pbs.org/hostedbento-prod/filer_public/2013/01/30/footer_blue.png);
+        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0072cf), to(#00487f));
+        background-image: -webkit-linear-gradient(top, #0072cf, #00487f); 
+        background-image: -moz-linear-gradient(top, #0072cf, #00487f);
+        background-image: -ms-linear-gradient(top, #0072cf, #00487f);
+        background-image: -o-linear-gradient(top, #0072cf, #00487f);
+        background-repeat: repeat-x;
+	}
+
+	/* Styles for newer, Metro-style tables */
+
+	.ms {
+		color: black;
+		padding-bottom: 20px;
+		width: 100%;
+	}
+            
+	.ms a {
+		color: black;
+		text-decoration: none;
+	}
+
+	.ms_head td {
+		background-color: black;
+		color: white;
+		font-size: 1.5em;
+		font-weight: bolder;
+		text-align: center;
+	}
+
+	.ms_name {
+		background-color: black;
+		border-top: 1px solid white;
+		color: white;
+		font-size: 1.2em;
+		font-weight: bolder;
+		padding: 5px;
+		text-align: left;
+		width: 85px;
+	}
+
+	.ms_program {
+		padding: 5px;
+	}
+
+	.ms_program h3 {
+		font-size: 1.5em;
+		margin: 0;
+	}
+
+	.ms_silver {
+		background-color: #E5E5E5;
+		color: black;
+		padding-left: 5px;
+	}
+
+	.ms_time {
+		background-color: black;
+		border-top: 1px solid white;
+		color: white;
+		font-size: 1.5em;
+		font-weight: bolder;
+		padding: 5px;
+		text-align: right;
+		width: 85px;
+		}
+
+	.ms_white {
+		color: black;
+		padding-left: 5px;
+	}
+
+	.navbar .nav > li > a {
+		color: #fff;
+		text-shadow: none;
+	}
+
+	.promo-container p {
+		display: none;
+	}
+
+	.promo-container .promo h2 {
+		font-size: 1.2em;
+	}
+	
+	.right-rail .text-plugin {
+		margin: 0;
+		margin-bottom: 1px;
+		padding: 0;
+	}
+	
+	@media (max-width: 599px) {
+		.explorer.default .main-menu {
+			background: transparent;
+			background-color: transparent;
+			background-image: none;
+		}
+	}
+	
+	@media (max-width: 767px) {
+		body {
+			padding: 0;
+		}
+	}
+</style>
