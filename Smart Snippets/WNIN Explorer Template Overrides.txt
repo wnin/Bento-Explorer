@@ -1,5 +1,9 @@
 <style>
 	/* HTML Elements - Least Specificity */
+	body {
+		font-size: 0.85em;
+	}
+
 	header {
 		background-color: #dedede;
 		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dedede), to(#00487f));
@@ -11,6 +15,18 @@
 		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#dedede', endColorstr='#ffffff')";
 	}
 
+	h1 {
+		font-size: 1.7em;
+	}
+
+	h3 {
+		font-size: 1.3em;
+	}
+
+	p {
+		font-size: inherit;
+	}
+
 	/* Classes - middle of specificity */
 	.explorer.default {
 		background: #fff;
@@ -18,13 +34,17 @@
 
 	.explorer.default .main-menu {
 		background-color: #0072cf;
-        background-image: url(http://bento.cdn.pbs.org/hostedbento-prod/filer_public/2013/01/30/footer_blue.png);
-        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0072cf), to(#00487f));
-        background-image: -webkit-linear-gradient(top, #0072cf, #00487f); 
-        background-image: -moz-linear-gradient(top, #0072cf, #00487f);
-        background-image: -ms-linear-gradient(top, #0072cf, #00487f);
-        background-image: -o-linear-gradient(top, #0072cf, #00487f);
-        background-repeat: repeat-x;
+	        background-image: url(http://bento.cdn.pbs.org/hostedbento-prod/filer_public/2013/01/30/footer_blue.png);
+        	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0072cf), to(#00487f));
+	        background-image: -webkit-linear-gradient(top, #0072cf, #00487f); 
+	        background-image: -moz-linear-gradient(top, #0072cf, #00487f);
+	        background-image: -ms-linear-gradient(top, #0072cf, #00487f);
+	        background-image: -o-linear-gradient(top, #0072cf, #00487f);
+        	background-repeat: repeat-x;
+	}
+
+	header .main-menu a {
+		font-size: inherit;
 	}
 
 	/* Styles for newer, Metro-style tables */
