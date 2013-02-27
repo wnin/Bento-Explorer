@@ -1,0 +1,129 @@
+<!-- 	AUTHOR: 	Jacob Robert Johnson
+		CONTACT:	jjohnson@wnin.org
+		LICENSE:	You are permitted to use, copy, and modify this code to your liking.
+					I only ask that if you make changes, you still attribute the code
+					to the original author. If you have any questions, feel free to
+					contact me at the above address.
+		
+		NOTES:		Once you get past the scary-looking gradient style code
+					and look at the basic functionality, this button is quite simple.
+					The user clicks on it, a transparent overlay fades over the
+					page, and a popup with an iFrame showing the donation page
+					slides down.
+						
+		VARIABLES:	donate_link	| Text Field
+					donate_text	| Text Field
+-->
+
+<style>
+	a.header_donate_link {
+		color: white!important;
+	}
+
+	#header_donate {
+		background-color: maroon;
+		border-radius: 10px 10px 0 0;
+		border-bottom: 1px solid rgb(121, 37, 107);
+		background: #ff0235; /* Old browsers *//* IE9 SVG, needs conditional override of 'filter' to 'none' */background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIxJSIgc3RvcC1jb2xvcj0iI2ZmMDIzNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ0JSIgc3RvcC1jb2xvcj0iI2JjMDMyOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhODAwMjEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);background: -moz-linear-gradient(top,  #ff0235 1%, #bc0328 44%, #a80021 100%); /* FF3.6+ */background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ff0235), color-stop(44%,#bc0328), color-stop(100%,#a80021)); /* Chrome,Safari4+ */background: -webkit-linear-gradient(top,  #ff0235 1%,#bc0328 44%,#a80021 100%); /* Chrome10+,Safari5.1+ */background: -o-linear-gradient(top,  #ff0235 1%,#bc0328 44%,#a80021 100%); /* Opera 11.10+ */background: -ms-linear-gradient(top,  #ff0235 1%,#bc0328 44%,#a80021 100%); /* IE10+ */background: linear-gradient(to bottom,  #ff0235 1%,#bc0328 44%,#a80021 100%); /* W3C */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0235', endColorstr='#a80021',GradientType=0 ); /* IE6-8 */
+		float: right;
+		font-size: 13px;
+		margin-right: 7px;
+		margin-top: -29px;
+		padding: 5px;
+	}
+	
+	#donate_overlay {
+		background-image: url(http://d3uly0oc2bnj1.cloudfront.net/hostedbento-prod/filer_public/2012/12/10/overlay2.png);
+		box-shadow: inset 0 0 100px black;
+		display: none;
+		left: 0;
+		position: fixed;
+		top: 0;
+		z-index: 999;
+	}
+	
+	#donate_frame {
+		background-color: white;
+		box-shadow: 0 0 25px black;
+		display: none;
+		height: 400px;
+		position: absolute;
+		top: 20px;
+		width: 850px;
+	}
+	
+	#donate_iframe {
+		border: 0;
+	}
+	
+	#donate_toolbar {
+		background-color: white;
+		height: 24px;
+	}
+	
+	#closeButton {
+		background: #ff0235; /* Old browsers *//* IE9 SVG, needs conditional override of 'filter' to 'none' */background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIxJSIgc3RvcC1jb2xvcj0iI2ZmMDIzNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ0JSIgc3RvcC1jb2xvcj0iI2JjMDMyOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhODAwMjEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);background: -moz-linear-gradient(top,  #ff0235 1%, #bc0328 44%, #a80021 100%); /* FF3.6+ */background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ff0235), color-stop(44%,#bc0328), color-stop(100%,#a80021)); /* Chrome,Safari4+ */background: -webkit-linear-gradient(top,  #ff0235 1%,#bc0328 44%,#a80021 100%); /* Chrome10+,Safari5.1+ */background: -o-linear-gradient(top,  #ff0235 1%,#bc0328 44%,#a80021 100%); /* Opera 11.10+ */background: -ms-linear-gradient(top,  #ff0235 1%,#bc0328 44%,#a80021 100%); /* IE10+ */background: linear-gradient(to bottom,  #ff0235 1%,#bc0328 44%,#a80021 100%); /* W3C */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0235', endColorstr='#a80021',GradientType=0 ); /* IE6-8 */
+		border: 1px solid black;
+		border-radius: 3px;
+		color: white!important;
+		display: block;
+		float: right;
+		font-size: 14px;
+		height: 20px;
+		margin: 2px;
+		text-decoration: none;
+		width: 20px;
+	}
+	}
+</style>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script>
+	var db = jQuery.noConflict();
+
+	function showDonate() {
+		db('#donate_overlay').width(db(window).width());
+		db('#donate_overlay').height(db(window).height());
+		db('#donate_overlay').fadeIn("slow");
+		db('#donate_frame').height(db(window).height() - 40);
+		db('#donate_iframe').height(db('#donate_frame').height() - 24);
+		db('#donate_frame').css("left", (db(window).width() - db('#donate_frame').width()) / 2 - 40 + "px");
+		db('#donate_frame').slideDown();
+		db('#donate_iframe').width(db('#donate_frame').width());
+	}
+	
+	function hideDonate() {
+		db('#donate_frame').slideUp();
+		db('#donate_overlay').fadeOut("slow");
+	}
+	
+	db(window).resize(function() {
+		db('#donate_overlay').width(db(window).width());
+		db('#donate_overlay').height(db(window).height());
+		db('#donate_frame').height(db(window).height() - 40);
+		db('#donate_iframe').height(db('#donate_frame').height() - 24);
+		db('#donate_frame').css("left", (db(window).width() - db('#donate_frame').width()) / 2 - 40 + "px");
+		db('#donate_iframe').width(db('#donate_frame').width());
+	});
+</script>
+
+<a class="header_donate_link" href="#" onclick="showDonate()">
+	<div id="header_donate" 
+		onmouseover="this.style.boxShadow = 'inset 0 5px 5px rgba(255,255,255,0.4)'"
+		onmouseout="this.style.boxShadow=''"
+	>
+		{{ donate_text }}
+	</div>
+</a>
+
+<div id="donate_overlay">
+	<div id="donate_frame">
+		<div id="donate_toolbar">
+			<a id="closeButton" href="#" onclick="hideDonate()">
+				<table><tr><td style="color: white; vertical-align: middle; text-align: center; width: 20px;">X</td></tr></table>
+			</a>
+		</div>
+		<iframe id="donate_iframe" src="{{ donate_link }}"></iframe>
+	</div>
+</div>
