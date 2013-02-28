@@ -25,6 +25,6 @@
 	}
 </style>
 
-<div id="red_donate_button" onclick="window.location.href='{{ donate_link }}'" onmouseout="this.style.boxShadow = none;" onmouseover="this.style.boxShadow = 'inset 0 5px 5px rgba(255,255,255,0.4)';">
+<div id="red_donate_button" onclick="window.location.href='{{ donate_link }}'" onmouseout="this.style.boxShadow = 'none';" onmouseover="this.style.boxShadow = 'inset 0 5px 5px rgba(255,255,255,0.4)';">
 	{{ donate_text }}
 </div>
