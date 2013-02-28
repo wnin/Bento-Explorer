@@ -43,6 +43,10 @@
         	background-repeat: repeat-x;
 	}
 
+	header .header-logos li {
+		margin-left: 15px;
+	}
+
 	header .main-menu a {
 		font-size: inherit;
 	}
